@@ -8,7 +8,7 @@ for line in sys.stdin.readlines():
     if multiLine:
         for i in range(len(line) - 1):
             # handle multiline comments with a boolean flag
-            if line[i:i+1] == '*/':
+            if line[i:i+2] == '*/':
                 multiLine = False
                 break
 
@@ -18,12 +18,12 @@ for line in sys.stdin.readlines():
 
     for i in range(len(line) - 1):
         # check if a single line comment starts, "//"
-        if line[i:i+1] == '//':
+        if line[i:i+2] == '//':
             sys.stdout.write(line[i+2:] + "\n")
             break
 
         # check if a multiline comment starts, "/*"
-        if line[i:i+1] == '/*':
+        if line[i:i+2] == '/*':
             sys.stdout.write(line[i+2:] + "\n")
             multiLine = True
             break
